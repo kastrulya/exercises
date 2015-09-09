@@ -3,55 +3,33 @@
 
 <head>
   <meta charset="utf-8">
-</head>
-
-<body>
-  <div id = "calendar"></div>
-  <script>
-  "use strict";
-  function createCalendar(id, year, month) {
-    try {
-      if (!document.getElementById(id)) throw new Error(id + " element not found");
-      var monthInfo = {};
-      monthInfo.daysNumber = new Date(year, month, 0).getDate();
-      monthInfo.firstDay = new Date(year, month - 1, 1).getDay();
-      var yearSpan  = document.createElement("span");
-      yearSpan.innerHTML = year
-      yearSpan.set
-      var table = document.createElement("table");
-      document.getElementById(id).appendChild(yearSpan);
-      document.getElementById(id).appendChild(table);
-      var row = table.appendChild(document.createElement("tr"));
-      var TITLES_DAYS_CONST = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
-
-      for (var i = 0; i < TITLES_DAYS_CONST.length; i++) {
-        var th = document.createElement("th");
-        th.innerHTML = TITLES_DAYS_CONST[i];
-        row.appendChild(th);
-      }
-
-      row = table.appendChild(document.createElement("tr"));
-
-      for (var i = 0; i < monthInfo.firstDay - 1; i++) {
-        row.appendChild(document.createElement("td"));
-      }
-
-      for (var i = 0; i < monthInfo.daysNumber; i++) {
-        if (new Date(year, month - 1, i).getDay() == 0)
-          row = table.appendChild(document.createElement("tr"));
-        var td = document.createElement("td");
-        td.innerHTML = i + 1;
-        row.appendChild(td);
-      }
-   } catch (err) {
-     console.log(err.message);
-   }
+  <script type="text/javascript" src = "exercise.js"></script>
+  <style type="text/css">
+  h1 {
+  	font-size: 200px;
+  	text-align: center;
   }
-
-    createCalendar("calendar", 1970, 1);
-    createCalendar("calendar", 1970, -1);
-    createCalendar("calendar", 1970, 0);
-
+  	#hours {
+  		color: red;
+  	}
+  	#minutes {
+  		color: green;
+  	}
+  	#seconds {
+  		color: blue;
+  	}
+  </style>
+</head>
+<body>
+  <h1 id = "clock">
+  	<span id="hours"></span> :
+  	<span id="minutes"></span> :
+  	<span id="seconds"></span>
+  </h1>
+  <button value="Start" onclick="clockStart();">Start</button>
+  <button value="Stop" onclick="clockStop();">Stop</button>
+  <script type="text/javascript">
+  	  clockStart();
   </script>
 </body>
 </html>
